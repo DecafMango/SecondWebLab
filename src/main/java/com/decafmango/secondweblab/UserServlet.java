@@ -24,6 +24,7 @@ public class UserServlet extends HttpServlet {
             return;
         }
 
+
         String pathInfo = request.getPathInfo();
         Optional<User> userOptional = checkUser(login);
         switch (pathInfo) {

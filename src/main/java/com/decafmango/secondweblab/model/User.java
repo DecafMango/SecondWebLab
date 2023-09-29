@@ -2,8 +2,8 @@ package com.decafmango.secondweblab.model;
 
 public class User {
 
-    private String login;
-    private String password;
+    private final String login;
+    private final String password;
 
     public User(String login, String password) {
         this.login = login;
