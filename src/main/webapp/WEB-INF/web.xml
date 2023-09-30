@@ -24,16 +24,6 @@
         <url-pattern>/check</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>com.decafmango.secondweblab.UserServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/user/*</url-pattern>
-    </servlet-mapping>
-
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>com.decafmango.secondweblab.CheckAuthFilter</filter-class>
@@ -43,4 +33,6 @@
         <filter-name>AuthFilter</filter-name>
         <servlet-name>ControllerServlet</servlet-name>
     </filter-mapping>
+
+
 </web-app>

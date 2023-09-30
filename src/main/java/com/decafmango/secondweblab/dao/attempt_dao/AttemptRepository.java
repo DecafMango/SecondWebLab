@@ -1,10 +1,11 @@
 package com.decafmango.secondweblab.dao.attempt_dao;
 
-import com.decafmango.secondweblab.model.Attempt;
+import com.decafmango.secondweblab.model.attempt.Attempt;
 import com.decafmango.secondweblab.model.User;
 
+import java.util.List;
+
 public interface AttemptRepository {
-    Attempt getUserAttempts(User user);
+    List<Attempt> getUserAttempts(User user);
     Attempt saveAttempt(Attempt attempt);
-    Attempt deleteUserAttempts(User user);
 }

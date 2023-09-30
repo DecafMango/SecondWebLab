@@ -2,13 +2,11 @@ package com.decafmango.secondweblab;
 
 import com.decafmango.secondweblab.dao.user_dao.UserRepository;
 import com.decafmango.secondweblab.model.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ejb.EJB;
 import jakarta.servlet.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 
 import java.io.IOException;
 import java.util.Optional;
@@ -25,14 +23,14 @@ public class CheckAuthFilter implements Filter {
 
         String pathInfo = request.getPathInfo();
 
-        System.out.println(pathInfo);
-
-        if (pathInfo == null)
+        if (pathInfo == null || pathInfo.equals("/check"))
             checkCookies(request, response);
         else if (pathInfo.equals("/login"))
             checkLogin(request, response);
         else if (pathInfo.equals("/register"))
             checkRegister(request, response);
+        else
+            response.setStatus(404);
     }
 
     private void checkCookies(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -116,7 +114,6 @@ public class CheckAuthFilter implements Filter {
             request.getRequestDispatcher("authorization.jsp").forward(request, response);
         } else {
             userRepository.saveUser(new User(login, password));
-            response.setStatus(201);
             request.getServletContext().getNamedDispatcher("ControllerServlet").forward(request, response);
         }
     }
