@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    background-color: rgb(199, 222, 242);
+}
+
+details {
+    display: block;
+    margin: 0 auto;
+    max-width: 30%;
+}
+
+details > summary > img {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+
+details > p {
+    position: absolute;
+    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+details > summary::marker /* Safari */ {
+    display: none;
+}
+
+details > summary::-webkit-details-marker /* Safari */ {
+    display: none;
+}
+
+fieldset {
+    margin: 100px auto;
+    padding: 10px;
+    max-width: 30%;
+    max-height: 50%;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: rgb(98, 125, 146);
+}
+
+fieldset > legend {
+    font-size: 20px;
+}
+
+fieldset > input {
+    display: block;;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    height: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    color:rgb(98, 125, 146);
+}
+
+fieldset > div {
+    display: inline-block;
+}
+
+fieldset > input[type="submit"] {
+    background-color: white;
+}
+
+.purple-border {
+    border: 3px solid purple;
+}

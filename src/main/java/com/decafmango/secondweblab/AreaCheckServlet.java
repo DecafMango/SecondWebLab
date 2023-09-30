@@ -7,6 +7,7 @@ import com.decafmango.secondweblab.model.attempt.Attempt;
 import com.decafmango.secondweblab.model.attempt.AttemptMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ejb.EJB;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,39 +27,7 @@ public class AreaCheckServlet extends HttpServlet {
     private AttemptRepository attemptRepository;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        validate(request, response);
-
-        float x = Float.parseFloat(request.getParameter("x"));
-        float y = Float.parseFloat(request.getParameter("y"));
-        int r = Integer.parseInt(request.getParameter("r"));
-
-        LocalDateTime attemptTime = LocalDateTime.now();
-
-        Instant scriptStartTime = Instant.now();
-        boolean isHit = checkHit(x, y, r);
-        Instant scriptEndTime = Instant.now();
-        Duration scriptDuration = Duration.between(scriptStartTime, scriptEndTime);
-
-        Cookie loginCookie = null;
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("X-User-Login")) {
-                loginCookie = cookie;
-                break;
-            }
-        }
-        String loginHeader = request.getHeader("X-User-Login");
-
-        User user = userRepository.getUserByLogin(loginCookie == null ? loginHeader : loginCookie.getValue()).get();
-        Attempt attempt = new Attempt(x, y, r, isHit, attemptTime, scriptDuration, user);
-        attemptRepository.saveAttempt(attempt);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValueAsString(attempt);
-        response.getWriter().print(objectMapper.writeValueAsString(AttemptMapper.toAttemptDto(attempt)));
-    }
-
-    private void validate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String xStr = request.getParameter("x");
         String yStr = request.getParameter("y");
         String rStr = request.getParameter("r");
@@ -97,6 +66,33 @@ public class AreaCheckServlet extends HttpServlet {
             response.setStatus(400);
             response.getWriter().print("r should be value of [1, 2, 3, 4, 5]");
         }
+
+        if (response.getStatus() == 400)
+            return;
+
+        LocalDateTime attemptTime = LocalDateTime.now();
+
+        Instant scriptStartTime = Instant.now();
+        boolean isHit = checkHit(x, y, r);
+        Instant scriptEndTime = Instant.now();
+        Duration scriptDuration = Duration.between(scriptStartTime, scriptEndTime);
+
+        Cookie loginCookie = null;
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equals("X-User-Login")) {
+                loginCookie = cookie;
+                break;
+            }
+        }
+        String loginHeader = request.getHeader("X-User-Login");
+
+        User user = userRepository.getUserByLogin(loginCookie == null ? loginHeader : loginCookie.getValue()).get();
+        Attempt attempt = new Attempt(x, y, r, isHit, attemptTime, scriptDuration, user);
+        attemptRepository.saveAttempt(attempt);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValueAsString(attempt);
+        response.getWriter().print(objectMapper.writeValueAsString(AttemptMapper.toAttemptDto(attempt)));
     }
 
     private boolean checkHit(float x, float y, int r) {

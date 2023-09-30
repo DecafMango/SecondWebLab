@@ -25,7 +25,7 @@ public class Attempt {
         this.y = y;
         this.r = r;
         this.isHit = isHit;
-        this.attemptTime = attemptTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        this.attemptTime = attemptTime.format(DateTimeFormatter.ofPattern("u-M-d k-m-s"));
         this.scriptDuration = scriptDuration.toNanos();
         this.user = user;
     }
