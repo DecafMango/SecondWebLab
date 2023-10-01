@@ -8,10 +8,7 @@ import com.decafmango.secondweblab.model.attempt.AttemptMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -77,18 +74,15 @@ public class AreaCheckServlet extends HttpServlet {
         Instant scriptEndTime = Instant.now();
         Duration scriptDuration = Duration.between(scriptStartTime, scriptEndTime);
 
-        Cookie loginCookie = null;
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("X-User-Login")) {
-                loginCookie = cookie;
-                break;
-            }
-        }
+        HttpSession session = request.getSession();
+        String login = (String) session.getAttribute("X-User-Login");
         String loginHeader = request.getHeader("X-User-Login");
 
-        User user = userRepository.getUserByLogin(loginCookie == null ? loginHeader : loginCookie.getValue()).get();
+        User user = userRepository.getUserByLogin(login == null ? loginHeader : login).get();
         Attempt attempt = new Attempt(x, y, r, isHit, attemptTime, scriptDuration, user);
         attemptRepository.saveAttempt(attempt);
+
+        System.out.println(attemptRepository.getUserAttempts(user));
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValueAsString(attempt);

@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: rgba(217, 229, 255, 0.7);
+}
+
+header {
+    text-align: center;
+    color: #30507D;
+    height: 150px;
+}
+
+details {
+    display: block;
+    margin: 0 auto;
+    max-width: 30%;
+}
+
+details > summary > img {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+
+details > p {
+    position: absolute;
+    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+details > summary::marker /* Safari */ {
+    display: none;
+}
+
+details > summary::-webkit-details-marker /* Safari */ {
+    display: none;
+}
+
+#field-canvas {
+    display: block;
+    margin: 10px auto;
+    border-radius: 20px;
+    background-color: white;
+}
+
+fieldset {
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+    padding-left: 25px;
+}
+
+input {
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+}
+
+fieldset:last-child button {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    background: #C6CFDC;
+}
+
+.button-pressed {
+    color: #ffffff;
+}
+
+fieldset:nth-child(2) input {
+    width: 80%;
+    border: none;
+    height: 20px;
+}
+
+fieldset:nth-child(2) input:focus {
+    outline: none;
+}
+
+.form-title {
+    color: #30507D;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 28px;
+}
+
+.input-from-container {
+    position: relative;
+    z-index: 2;
+    max-width: 415px;
+    background: #ffffff;
+    box-shadow: 0px 6px 50px rgba(217, 229, 255, 0.7);
+    border-radius: 20px;
+    padding: 28px 30px;
+    margin: 10px auto;
+}
+
+.form-field {
+    margin-bottom: 13px;
+}
+
+.radio-button-container {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.form-buttons button {
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+}
+
+.submit-button {
+    display: block;
+    height: 35px;
+    background: #247FFF;
+    border-radius: 5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 45px;
+}
+
+.submit-button:hover {
+    background: #0D6CF2;
+}
+
+.purple-border {
+    border-color: purple;
+}
+
+
+.results-table-container {
+    margin: 10px auto;
+    background: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    max-width: 650px;
+}
+
+.reset-table-button {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+    border: 1px solid #C6CFDC;
+    border-radius: 20px;
+    text-align: center;
+    background: white;
+    color: #30507D;
+}
+
+.reset-table-button:hover {
+    background: #30507D;
+    color: white;
+}
+
+
+.results-table {
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+.results-table th, .results-table td {
+    padding: 0 10px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px solid #E9F2FF;
+}
+
+.results-table th {
+    color: #30507D;
+}
+
+footer > div {
+    display: inline-block;
+}
+
+.duck-logo-image {
+    max-width: 50px;
+}
+
+.footer-text-container {
+    color: #30507D;
+}
+
+.footer-text-container span {
+    font-size: 14px;
+}

@@ -8,4 +8,5 @@ import java.util.List;
 public interface AttemptRepository {
     List<Attempt> getUserAttempts(User user);
     Attempt saveAttempt(Attempt attempt);
+    void deleteUserAttempts(User user);
 }

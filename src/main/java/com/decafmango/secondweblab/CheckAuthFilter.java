@@ -24,7 +24,7 @@ public class CheckAuthFilter implements Filter {
 
         String pathInfo = request.getPathInfo();
 
-        if (pathInfo == null || pathInfo.equals("/check"))
+        if (pathInfo == null || pathInfo.equals("/check") || pathInfo.equals("/reset"))
             checkSession(request, response);
         else if (pathInfo.equals("/login"))
             checkLogin(request, response);
@@ -67,7 +67,7 @@ public class CheckAuthFilter implements Filter {
         String password = request.getHeader("X-User-Password");
 
         if (login == null || password == null) {
-            response.setStatus(401);
+            response.setStatus(400);
             request.getRequestDispatcher("/auth-form.jsp").forward(request, response);
             return;
         }
@@ -85,7 +85,7 @@ public class CheckAuthFilter implements Filter {
                 request.getRequestDispatcher("/auth-form.jsp").forward(request, response);
             }
         } else {
-            response.setStatus(401);
+            response.setStatus(404);
             request.getRequestDispatcher("/auth-form.jsp").forward(request, response);
         }
     }
@@ -95,7 +95,7 @@ public class CheckAuthFilter implements Filter {
         String password = request.getHeader("X-User-Password");
 
         if (login == null || password == null) {
-            response.setStatus(401);
+            response.setStatus(400);
             request.getRequestDispatcher("/auth-form.jsp").forward(request, response);
             return;
         }

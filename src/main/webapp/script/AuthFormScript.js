@@ -28,11 +28,35 @@ async function submit() {
 
     if (response.ok)
         window.location = "http://" + window.location.host + "/" + window.location.pathname.split("/")[1] + "/second-web-lab";
-    else
-        console.log("not ok");
+    else {
+        let loginLabel = document.querySelector("label[for='login-input']");
+        let passwordLabel = document.querySelector("label[for='password-input']");
+        switch (response.status) {
+            case 401:
+                passwordLabel.classList.remove("hidden");
+                passwordLabel.textContent = "Invalid password";
+                break;
+            case 404:
+                loginLabel.classList.remove("hidden");
+                loginLabel.textContent = "User doesn't exist";
+                break;
+            case 418:
+                loginLabel.classList.remove("hidden");
+                loginLabel.textContent = "User exists";
+                break;
+        }
+    }
 }
 
 function validate() {
+    let loginLabel = document.querySelector("label[for='login-input']");
+    let passwordLabel = document.querySelector("label[for='password-input']");
+
+    loginLabel.classList.add("hidden");
+    loginLabel.classList.remove("purple-border");
+    passwordLabel.classList.add("hidden");
+    passwordLabel.classList.remove("purple-border")
+
     let valid = true;
     let login = loginInput.value;
     let password = passwordInput.value;

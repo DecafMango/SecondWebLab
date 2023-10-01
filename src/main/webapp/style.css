@@ -74,6 +74,15 @@ fieldset > input[type="submit"] {
     background-color: white;
 }
 
+fieldset > label {
+    color: purple;
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
 .purple-border {
     border: 3px solid purple;
 }

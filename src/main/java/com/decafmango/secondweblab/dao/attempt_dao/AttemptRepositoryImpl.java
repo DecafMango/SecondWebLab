@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Singleton
 public class AttemptRepositoryImpl implements AttemptRepository {
 
-    private final List<Attempt> attempts = new ArrayList<>();
+    private List<Attempt> attempts = new ArrayList<>();
 
     @Override
     public List<Attempt> getUserAttempts(User user) {
@@ -23,5 +23,12 @@ public class AttemptRepositoryImpl implements AttemptRepository {
     public Attempt saveAttempt(Attempt attempt) {
         attempts.add(attempt);
         return attempt;
+    }
+
+    @Override
+    public void deleteUserAttempts(User user) {
+        attempts = attempts.stream()
+                .filter(attempt -> !attempt.getUser().equals(user))
+                .collect(Collectors.toList());
     }
 }

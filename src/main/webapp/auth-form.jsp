@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <style><%@include file="style.css"%></style>
@@ -20,26 +20,28 @@
     <details>
         <summary><img src="https://se.ifmo.ru/o/helios-theme/images/cs_logo.png" alt="duck logo"></summary>
         <p>
-            Лабораторная работа №2<br>
-            Вариант: 17116<br>
-            Студент: Разинкин Александр<br>
-            Группа: P3207
+            Laboratory Work №2<br>
+            Variant: 17113<br>
+            Student: Разинкин Александр<br>
+            Group: P3207
         </p>
     </details>
 </header>
 <main>
     <fieldset>
         <legend>Авторизация</legend>
-        <input id="login-input" type="text" placeholder="Введите логин" name="X-User-Login">
-        <input id="password-input" type="password" placeholder="Введите пароль" name="X-User-Password">
-        <input id="submit-button" type="submit" value="Отправить">
+        <label class="hidden" for="login-input">111</label>
+        <input id="login-input" type="text" placeholder="Enter login" name="X-User-Login">
+        <label class="hidden" for="password-input">111</label>
+        <input id="password-input" type="password" placeholder="Enter password" name="X-User-Password">
+        <input id="submit-button" type="submit" value="Submit">
         <div class="auth-type-container">
             <div class="login-container"></div>
-            <label for="login-radio">Вход</label>
+            <label for="login-radio">Login</label>
             <input id="login-radio" type="radio" value="login" name="Auth-Type" checked>
         </div>
         <div class="register-container">
-            <label for="register-radio">Регистрация</label>
+            <label for="register-radio">Register</label>
             <input id="register-radio" type="radio" value="register" name="Auth-Type">
         </div>
         </div>
