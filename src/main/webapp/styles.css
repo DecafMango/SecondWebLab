@@ -105,7 +105,7 @@ fieldset:nth-child(2) input:focus {
     z-index: 2;
     max-width: 415px;
     background: #ffffff;
-    box-shadow: 0px 6px 50px rgba(217, 229, 255, 0.7);
+    box-shadow: 0 6px 50px rgba(217, 229, 255, 0.7);
     border-radius: 20px;
     padding: 28px 30px;
     margin: 10px auto;
@@ -142,6 +142,21 @@ fieldset:nth-child(2) input:focus {
 
 .submit-button:hover {
     background: #0D6CF2;
+}
+
+.exit-button {
+    display: block;
+    height: 35px;
+    background: #C6CFDC;
+    border-radius: 5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 45px;
+}
+
+.exit-button:hover {
+    background: #30507D;
 }
 
 .purple-border {

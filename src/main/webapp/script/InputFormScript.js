@@ -185,11 +185,8 @@ function repaintCanvas(r) {
 
 
 document.getElementById("field-canvas").onclick = function (event) {
-    let x = (event.clientX - document.body.offsetWidth / 2);
-    let y = (160 + 415 / 2 + 1 - event.clientY);
-
-    console.log(document.body.scrollHeight);
-
+    let x = (event.pageX - document.body.offsetWidth / 2);
+    let y = (160 + 415 / 2 + 1 - event.pageY);
 
     // calculate x
     x /= 40;
@@ -226,7 +223,6 @@ function checkFields() {
     let isValid = true;
     let xValueField = document.querySelector(".form-field:first-child");
     let yValueField = document.querySelector(".form-field:nth-child(2)");
-    let rValueField = document.querySelector(".form-field:last-child");
 
     // check x
     let xValueCheckedCounter = 0;
@@ -341,6 +337,7 @@ resetTableButton.onclick = async function () {
         "                <th>Duration, ns.</th>\n" +
         "                <th>Result</th>\n" +
         "            </tr>"
+    repaintCanvas();
 }
 
 function addAttemptToTable(attempt) {
@@ -354,5 +351,10 @@ function addAttemptToTable(attempt) {
 
 function convertToTableRow(attempt) {
     return "<tr><td>" + attempt.x + "</td><td>" + attempt.y + "</td><td>" + attempt.r + "</td><td>" + attempt.attemptTime + "</td><td>" + attempt.scriptDuration + "</td><td>" + attempt.hit + "</td></tr>";
+}
+
+let exitButton = document.querySelector(".exit-button");
+exitButton.onclick = async function () {
+    window.location = "http://" + window.location.host + "/" + window.location.pathname.split("/")[1] + "/second-web-lab/login";
 }
 

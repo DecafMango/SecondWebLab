@@ -1,6 +1,5 @@
 <%@ page import="com.decafmango.secondweblab.dao.attempt_dao.AttemptRepository" %>
 <%@ page import="com.decafmango.secondweblab.model.attempt.Attempt" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.decafmango.secondweblab.model.User" %>
 <%@ page import="com.decafmango.secondweblab.dao.user_dao.UserRepository" %><%--
   Created by IntelliJ IDEA.
@@ -48,31 +47,31 @@
                 <legend>
                     Choose X
                 </legend>
-                <input id="x-checkbox--2"type="checkbox" name="x" value="-2">
+                <input id="x-checkbox--2" type="checkbox" name="x" value="-2">
                 <label for="x-checkbox--2">-2</label>
 
-                <input id="x-checkbox--1.5"type="checkbox" name="x" value="-1.5">
+                <input id="x-checkbox--1.5" type="checkbox" name="x" value="-1.5">
                 <label for="x-checkbox--1.5">-1.5</label>
 
-                <input id="x-checkbox--1"type="checkbox" name="x" value="-1">
+                <input id="x-checkbox--1" type="checkbox" name="x" value="-1">
                 <label for="x-checkbox--1">-1</label>
 
-                <input id="x-checkbox--0.5"type="checkbox" name="x" value="-0.5">
+                <input id="x-checkbox--0.5" type="checkbox" name="x" value="-0.5">
                 <label for="x-checkbox--0.5">-0.5</label>
 
-                <input id="x-checkbox-0"type="checkbox" name="x" value="0">
+                <input id="x-checkbox-0" type="checkbox" name="x" value="0">
                 <label for="x-checkbox-0">0</label>
 
-                <input id="x-checkbox-0.5"type="checkbox" name="x" value="0.5">
+                <input id="x-checkbox-0.5" type="checkbox" name="x" value="0.5">
                 <label for="x-checkbox-0.5">0.5</label>
 
-                <input id="x-checkbox-1"type="checkbox" name="x" value="1">
+                <input id="x-checkbox-1" type="checkbox" name="x" value="1">
                 <label for="x-checkbox-1">1</label>
 
-                <input id="x-checkbox-1.5"type="checkbox" name="x" value="1.5">
+                <input id="x-checkbox-1.5" type="checkbox" name="x" value="1.5">
                 <label for="x-checkbox-1.5">1.5</label>
 
-                <input id="x-checkbox-2"type="checkbox" name="x" value="2">
+                <input id="x-checkbox-2" type="checkbox" name="x" value="2">
                 <label for="x-checkbox-2">2</label>
             </fieldset>
             <fieldset class="form-field">
@@ -94,6 +93,7 @@
         </div>
         <div class="form-buttons">
             <button class="submit-button" type="submit">Submit</button>
+            <button class="exit-button" type="submit">Exit</button>
         </div>
     </div>
     <div class="results-table-container">
